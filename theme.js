@@ -12,7 +12,7 @@ const Provider = ({children, slides, index}) => (
         margin: '16px',
       }}
     >
-      {index} / {slides.length}
+      {index + 1} / {slides.length}
     </div>
   </div>
 )
@@ -62,5 +62,8 @@ export default {
   },
   p: {
     margin: '0.2em 0',
-  }
+  },
+  a: {
+    textDecoration: 'none',
+  },
 }

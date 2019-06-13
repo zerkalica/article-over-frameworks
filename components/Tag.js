@@ -8,7 +8,7 @@ export const Tags = styled.div`
   justify-content: center;
   align-text: center;
   font-size: 0.7em;
-  margin: 0.5rem 0;
+  margin: 1.4rem 0;
   padding: 0 3em;
 `
 

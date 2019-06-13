@@ -33,7 +33,8 @@ export const themes = [
 
 <Notes>
     Меня зовут Сергей. Я работаю фронтенд-разработчиком в компании QIWI.
-    Всегда хотел создавать хорошо кастомизируемые приложения малой кровью, концентрируясь на предметной области, а не над подбором библиотек, настройкой деплоя, скафолдингом и бойлерплейтом.
+    Что нужно, что б написать иподдерживать приложение малой кровью, не занимаясь подбором библиотек?
+    Всегда хотел создавать хорошо кастомизируемые приложения малой кровью, концентрируясь на предметной области, а не над подбором стека, настройкой деплоя, скафолдингом и бойлерплейтом.
     Что б выбрать технологию, надо знать какие части нужны для полноценной разработки, что б как минимум, они были в фреймворке и как они реализованны.
     В своем докладе я попытаюсь систематизировать эти части.
 </Notes>
@@ -46,7 +47,7 @@ export const themes = [
 
 immutable-di, reactive-di
 
-<Icon src="i/dig.svg"/>
+<Icon big src="i/saw.svg"/>
 
 lom_atom + react = mobx + 5%
 
@@ -82,8 +83,8 @@ mol_atom2 + react = lom_atom + 5%
 </Tags>
 
 <Icons>
-  <Icon big strike src="i/file.svg"/>
-  <Icon big src="i/car.svg"/>
+  <Icon strike src="i/file.svg"/>
+  <Icon src="i/car.svg"/>
 </Icons>
 
 ---
@@ -274,19 +275,6 @@ Read only
 
 ---
 
-## Когда загрузить заново?
-
-<Icon src="i/reset.svg"/>
-Mount: дернуть effect
-
-<br/>
-<br/>
-
-<Icon src="i/action.svg"/>
-Action: действие пользователя
-
----
-
 # ???
 
 <Icons>
@@ -426,19 +414,12 @@ namespace $ {
 
 ## Локализация
 
+### Текст как ключ в react-i18next
+
 <Icons>
   <Icon big src="i/key.svg"/>
   <Icon big text="Text" />
 </Icons>
-<p>
-  ключи или текст
-</p>
-<br/>
-<Icon big src="i/lang.svg" />
-
----
-
-### Текст как ключ в react-i18next
 
 ```jsx
 function MyComponent () {
@@ -468,25 +449,9 @@ $my_component.locale=en.json
 }
 ```
 
-<Icon big src="i/mol.svg"/>
-
----
-
-# ???
-
-<Icons>
-  <Icon big src="i/key.svg"/>
-  <Icon big text="+" />
-  <Icon big src="i/triangle.svg"/>
-  <Icon big text="+" />
-  <Icon big text="util" />
-</Icons>
-
 <Tags>
-  <Tag>ключи</Tag>
   <Tag>строго</Tag>
-  <Tag>выгрузка</Tag>
-  <Tag>сборка</Tag>
+  <Tag>навигация</Tag>
 </Tags>
 
 ---
@@ -583,11 +548,22 @@ Mol заставляет писать id каждой детали
 
 <img width="500px" src="i/debug.png" />
 
+<Tags>
+  <Tag>prod</Tag>
+  <Tag>dev</Tag>
+  <Tag>server</Tag>
+  <Tag>исключения</Tag>
+  <Tag>навигация</Tag>
+</Tags>
+
 ---
 
-### Найти файл по html
+### Есть верстка, где компонент?
 
 <img src="i/debug-good.png" />
+
+<br/>
+<Icon big src="i/mol.svg"/>
 
 ---
 
@@ -595,15 +571,73 @@ Mol заставляет писать id каждой детали
 
 <img src="i/debug-bad2.png" />
 
----
-
-### Информация об объекте
-
-<img src="i/debug-objects.png" />
+dev tools, source map?
 
 ---
 
-### React: catch
+### Кто создал?
+
+Mol
+
+```
+this
+$mol_app_demo.Root(0).Widget("mol_button_demo").Major_enabled() {…}
+```
+<br/>
+React
+
+```
+this
+Button {…}
+```
+
+<Icons>
+  <Icon big src="i/hierarchy.svg"/>
+</Icons>
+
+---
+
+### Исключения
+
+React
+
+```text
+Uncaught ReferenceError: qwe is not defined
+  at B (<anonymous>:44:5)
+  at renderWithHooks (react-dom.development.js:13073)
+  at mountIndeterminateComponent (react-dom.development.js:15155)
+  ...
+```
+
+Mol
+
+```
+atom.ts:125 Error
+  at $mol_app_supplies.Root(0).List().Supply_row(0).provider_name (...)
+	pull	@	atom.ts:125
+
+$mol_app_demo.Root(0).Widget("mol_button_demo").Major_enabled.value
+$mol_button_major
+```
+
+<Tags>
+  <Tag>имена</Tag>
+  <Tag>навигация</Tag>
+</Tags>
+
+---
+
+### didCatch componentStack
+
+```text
+The above error occurred in the <B> component:
+  in B (created by A)
+  in A
+  in div
+  in ErrorCatch
+```
+
+[jsfiddle.net/zerkalica/jro43nbg](https://jsfiddle.net/zerkalica/jro43nbg)
 
 ```jsx
 const B = () => <div>test {qwe}</div> // Error !
@@ -619,23 +653,27 @@ ReactDOM.render(<ErrorCatch>
 
 ---
 
-### React: trace
+# ???
 
-<img src="i/debug-trace.png" />
+<Icon big src="i/holy.svg"/>
+
+<Icon big src="i/no-bug.svg"/>
 
 ---
 
 ## Сообщество
 
-<Tags>
-  <Tag>упорство автора</Tag>
-  <Tag>возраст issue</Tag>
-  <Tag>работа с трекером</Tag>
-  <Tag>паттерны</Tag>
-  <Tag>реальные примеры</Tag>
-</Tags>
+<img width="230px" height="200px" src="i/lenin.svg"/>
 
 Насколько просто помочь?
+
+<Tags>
+  <Tag>автор</Tag>
+  <Tag>bug трекер</Tag>
+  <Tag>возраст issue</Tag>
+  <Tag>реальные примеры</Tag>
+  <Tag>навигация</Tag>
+</Tags>
 
 <Icon big src="i/family.svg"/>
 
@@ -648,9 +686,52 @@ ReactDOM.render(<ErrorCatch>
 
 ---
 
+# ???
+
+<div style={{display: 'flex'}}>
+  <div style={{display: 'flex', flex: '0 1 50%', flexDirection: 'column'}}>
+    <h3>Low</h3>
+    <Tags>
+      <Tag>зоопарк</Tag>
+      <Tag>детали</Tag>
+      <Tag>копипаста</Tag>
+      <Tag>гибкость</Tag>
+      <Tag>трэнды</Tag>
+      <Tag>React</Tag>
+      <Tag>Vue</Tag>
+      <Tag>Angular</Tag>
+    </Tags>
+  </div>
+  <div style={{display: 'flex', flex: '0 1 50%', flexDirection: 'column'}}>
+    <h3>High</h3>
+    <Tags>
+      <Tag>кровавый</Tag>
+      <Tag>энтерпрайз</Tag>
+      <Tag>RAD</Tag>
+      <Tag>CRM</Tag>
+      <Tag>дубовый</Tag>
+      <Tag>унылый</Tag>
+      <Tag>ExtJS</Tag>
+      <Tag>Material UI</Tag>
+      <Tag>Xamarin.Forms</Tag>
+      <Tag>JavaFX</Tag>
+      <Tag>Qt</Tag>
+    </Tags>
+  </div>
+</div>
+
+[mol.js.org](https://mol.js.org)
+
+
+---
+
 ## Спасибо,
 
 <img src="i/bye.png" />
 
 
 Юферев Сергей, [s.yuferev@qiwi.com](mailto:s.yuferev@qiwi.com)
+
+
+<br/>
+QIWI 2019

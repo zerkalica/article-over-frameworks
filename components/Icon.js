@@ -5,6 +5,7 @@ export const Icons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1rem 0;
 `
 
 export const IconContainer = styled.div`
