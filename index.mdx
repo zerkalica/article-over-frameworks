@@ -46,9 +46,10 @@ export const themes = [
 100
 
 immutable-di, reactive-di
-
-<Icon big src="i/saw.svg"/>
-
+<Icons>
+  <Icon big src="i/saw.svg"/>
+  <Icon big src="i/react.svg"/>
+</Icons>
 lom_atom + react = mobx + 5%
 
 mol_atom2 + react = lom_atom + 5%
@@ -57,7 +58,7 @@ mol_atom2 + react = lom_atom + 5%
   <Icon big src="i/sad.svg"/>
   <Icon big src="i/react.svg"/>
   <Icon big src="i/broken_heart.svg"/>
-  <Icon big src="i/brain.svg"/>
+  <Icon big src="i/libra.svg"/>
 </Icons>
 
 ---
@@ -65,27 +66,57 @@ mol_atom2 + react = lom_atom + 5%
 ## О чем это
 
 <Tags>
+  <TagBox><TagHeader>ЯП</TagHeader><TagFooter>типы, сопрограммы, реактивность</TagFooter></TagBox>
   <TagBox><TagHeader>Реактивность</TagHeader><TagFooter>ООП, ФП, react</TagFooter></TagBox>
   <TagBox><TagHeader>Асинхронность</TagHeader><TagFooter>effects, suspense</TagFooter></TagBox>
 </Tags>
 <Tags>
   <TagBox><TagHeader>Кэш</TagHeader><TagFooter>ручной, автоматический</TagFooter></TagBox>
   <TagBox><TagHeader>Контексты, DI</TagHeader><TagFooter>type, token, namespace</TagFooter></TagBox>
-  <TagBox><TagHeader>Модули</TagHeader><TagFooter>компоненты, тесты, демки</TagFooter></TagBox>
+  <TagBox><TagHeader>Внешнее API</TagHeader><TagFooter>fetch, location, storage</TagFooter></TagBox>
 </Tags>
 <Tags>
   <TagBox><TagHeader>Локализация</TagHeader><TagFooter>ключи, deploy</TagFooter></TagBox>
   <TagBox><TagHeader>UI</TagHeader><TagFooter>адаптивный</TagFooter></TagBox>
+  <TagBox><TagHeader>Модули</TagHeader><TagFooter>компоненты, тесты, демки</TagFooter></TagBox>
   <TagBox><TagHeader>Отладка</TagHeader><TagFooter>сервер, exceptions, refactor</TagFooter></TagBox>
 </Tags>
 <Tags>
-  <TagBox><TagHeader>Сообщество</TagHeader><TagFooter>живое</TagFooter></TagBox>
+  <TagBox><TagHeader>Сообщество</TagHeader><TagFooter>помощь, примеры, документация</TagFooter></TagBox>
 </Tags>
 
 <Icons>
   <Icon strike src="i/file.svg"/>
   <Icon src="i/car.svg"/>
 </Icons>
+
+---
+
+## ЯП
+
+<Icons>
+  <Icon src="i/typescript.svg" />
+  <Icon text="?" />
+</Icons>
+<Icons>
+  <Icon src="i/vue.svg" />
+  <Icon src="i/sad.svg" />
+  <Icon text="vetur" />
+</Icons>
+
+<Icons>
+  <Icon src="i/react.svg" />
+  <Icon text="jsx" />
+  <Icon text="+" />
+  <Icon src="i/nails.svg" />
+</Icons>
+
+<Tags>
+  <Tag>типы</Tag>
+  <Tag>сопрограммы</Tag>
+  <Tag>реактивность</Tag>
+  <Tag>разделяемая память</Tag>
+</Tags>
 
 ---
 
@@ -101,6 +132,12 @@ mol_atom2 + react = lom_atom + 5%
 
 Изменения
 
+<Tags>
+  <Tag>колбэки</Tag>
+  <Tag>события</Tag>
+  <Tag>потоки</Tag>
+</Tags>
+
 <Notes>
     Есть пользователь интерфейс, значит есть распространение изменений.
     Динамические потоки,
@@ -115,51 +152,59 @@ mol_atom2 + react = lom_atom + 5%
   <Icon src="i/oop.svg" />
   <Icon text="+" />
   <Icon src="i/rocket.svg" />
-  <Icon text="=" />
-  <Icon text="Mobx" />
 </Icons>
 
 ```ts
 class Counter {
-    @observable count = 0
-    @action.bound increment() {
-        this.count++
-    }
-}
+  @observable count = 0
 
-@observer class Example extends Component {
-  counter = new Counter
-  render() {
-    const counter = this.counter
-    return <div>
-      <p>{counter.count}</p>
-      <button onClick={counter.increment}>+</button>
-    </div>
+  @action.bound increment() {
+    this.count++
   }
 }
+
+const Example = observer(({counter}) => <div>
+  <p>{counter.count}</p>
+  <button onClick={counter.increment}>+</button>
+</div>
 ```
+
+<Tags>
+  <Tag>MobX+</Tag>
+  <Tag>Vue</Tag>
+  <Tag>Svelte</Tag>
+  <Tag>Glimmer</Tag>
+</Tags>
 
 ---
 
-<Icons>
-  <Icon src="i/oop.svg" />
-  <Icon text="+" />
-  <Icon src="i/rocket.svg" />
-  <Icon text="=" />
-</Icons>
-<Icons>
-  <Icon text="Vue, Svelte, Glimmer" />
-</Icons>
 <br/>
 <Icons>
   <Icon text="fp()" />
   <Icon text="+" />
   <Icon src="i/rocket.svg" />
-  <Icon text="=" />
 </Icons>
-<Icons>
-  <Icon text="CycleJS, RxReact" />
-</Icons>
+
+```js
+function main(sources) {
+  const action$ = xs.merge(
+    sources.DOM.select('.increment').events('click').map(ev => +1)
+  )
+
+  const count$ = action$.fold((acc, x) => acc + x, 0)
+  const vdom$ = count$.map(count => div([
+    button('.increment', 'Increment'),
+    p('Counter: ' + count)
+  ]))
+
+  return { DOM: vdom$ }
+}
+```
+
+<Tags>
+  <Tag>CycleJS</Tag>
+  <Tag>RxReact</Tag>
+</Tags>
 
 ---
 
@@ -167,8 +212,6 @@ class Counter {
   <Icon text="Proc" />
   <Icon text="+" />
   <Icon text="SE" />
-  <Icon text="=" />
-  <Icon text="React" />
 </Icons>
 
 ```jsx
@@ -187,14 +230,17 @@ function Example() {
 }
 ```
 
+<Tags>
+  <Tag>React</Tag>
+</Tags>
+
 ---
 
 # ???
 
-<Icon big src="i/holy.svg"/>
 <Icons>
-  <Icon big src="i/brain.svg"/>
-  <Icon big text="+" />
+  <Icon big src="i/copypaste.svg"/>
+  <Icon big src="i/universe.svg"/>
   <Icon big src="i/house.svg"/>
 </Icons>
 
@@ -217,16 +263,13 @@ function Example() {
 </Notes>
 
 ---
-### Effects
+
+### Pending state
 
 <Icons>
   <Icon src="i/action.svg"/>
-  <Icon text="+"/>
   <Icon src="i/state.svg"/>
   <Icon src="i/clock.svg"/>
-  <Icon src="i/action.svg"/>
-  <Icon text="+"/>
-  <Icon src="i/state.svg"/>
 </Icons>
 
 ```jsx
@@ -242,9 +285,11 @@ function User({ user }) {
 }
 ```
 
-Actions + pending state
-
-<Icon src="i/copypaste.svg"/>
+<Tags>
+  <Tag>actions</Tag>
+  <Tag>state</Tag>
+  <Tag>pending</Tag>
+</Tags>
 
 ---
 
@@ -252,7 +297,6 @@ Actions + pending state
 
 <Icons>
   <Icon src="i/sleep.svg"/>
-  <Icon text="+"/>
   <Icon src="i/loop.svg"/>
 </Icons>
 
@@ -268,10 +312,13 @@ function User({id}) {
   </Load>
 }
 ```
-
-Cache + promise exception + rerender
-
-Read only
+<Tags>
+  <Tag>cache</Tag>
+  <Tag>promise</Tag>
+  <Tag>exception</Tag>
+  <Tag>rerender</Tag>
+  <Tag>read only</Tag>
+</Tags>
 
 ---
 
@@ -279,13 +326,12 @@ Read only
 
 <Icons>
   <Icon big src="i/action.svg"/>
-  <Icon big text="vs"/>
-  <Icon big src="i/sleep.svg"/>
-  <Icon big text="+"/>
-  <Icon big src="i/cooking.svg"/>
 </Icons>
-<br/>
-<Icon big src="i/house.svg"/>
+vs
+<Icons>
+  <Icon big src="i/sleep.svg"/>
+  <Icon big src="i/copypaste.svg"/>
+</Icons>
 
 ---
 
@@ -307,11 +353,15 @@ Read only
   <Icon big src="i/rocket.svg"/>
 </Icons>
 
-Иерархия + переопределение + реактивость
+<Tags>
+  <Tag>Иерархия</Tag>
+  <Tag>переопределение</Tag>
+  <Tag>реактивость</Tag>
+</Tags>
 
 ---
 
-### Контексты на ключах (React)
+### Контексты на провайдерах (React)
 
 ```jsx
 const Theme = React.createContext({ fg: 'red' })
@@ -326,8 +376,6 @@ const Users = () => <Theme.Consumer>{theme =>
   </div>
 </Theme.Consumer>
 ```
-
-<Icon big src="i/key.svg"/>
 
 ---
 
@@ -384,61 +432,50 @@ namespace $ {
 # ???
 
 <Icons>
-  <Icon big src="i/universe.svg"/>
-  <Icon big text="+" />
   <Icon big src="i/typescript.svg"/>
-  <Icon big text="-" />
   <Icon big src="i/copypaste.svg"/>
 </Icons>
 
 ---
 
-## Модули
+### Внешнее API
 
-<img src="i/ui-docs.png" />
 <Icons>
-  <Icon src="i/hierarchy.svg"/>
+  <Icon text="url"/>
   <Icon text="+"/>
-  <Icon text="имена"/>
+  <Icon big src="i/state.svg"/>
+  <Icon text="+"/>
+  <Icon big src="i/rocket.svg"/>
 </Icons>
+
+Ниточки к браузеру
+
 <Tags>
-  <Tag>компоненты</Tag>
-  <Tag>модели</Tag>
-  <Tag>тесты</Tag>
-  <Tag>демки</Tag>
-  <Tag>readme</Tag>
+  <Tag>location</Tag>
+  <Tag>routing</Tag>
+  <Tag>storage</Tag>
+  <Tag>fetch</Tag>
+  <Tag>sockets</Tag>
 </Tags>
 
+<Tags>
+  <Tag>axios</Tag>
+  <Tag>react-router</Tag>
+</Tags>
 
 ---
 
 ## Локализация
 
-### Текст как ключ в react-i18next
-
-<Icons>
-  <Icon big src="i/key.svg"/>
-  <Icon big text="Text" />
-</Icons>
-
 ```jsx
-function MyComponent () {
-  const { t, i18n } = useTranslation();
-  return <h1>{t('Welcome to React')}</h1>
-}
+<h1>{t('my_component:welcome_title')}</h1>
 ```
-
-<Icon big src="i/react.svg"/>
-
----
-
-### Id в mol
+vs
 
 ```text
-$my_component
-  dom \h1
-  sub /
-    <= welcome_title @ \Welcome to React
+dom \h1
+sub /
+  <= welcome_title @ \Welcome to React
 ```
 <br/>
 $my_component.locale=en.json
@@ -470,14 +507,18 @@ $my_component.locale=en.json
 </Tags>
 
 <br/>
-
-<Icon big src="i/box.svg"/>
-Система
+<Icons>
+  <Icon big src="i/box.svg"/>
+  <Icon big text="Система"/>
+  <Icon big text="+"/>
+  <Icon big text="примеры"/>
+</Icons>
 
 <Tags>
   <Tag>адаптивность</Tag>
-  <Tag>автоматизация</Tag>
+  <Tag>взаимосвязи</Tag>
   <Tag>расширение</Tag>
+  <Tag>автоматизация</Tag>
 </Tags>
 
 ---
@@ -500,7 +541,7 @@ $my_component.locale=en.json
 
 ---
 
-## Автоматизация
+## Система. Автоматизация
 
 <video autoplay="autoplay" loop="loop">
   <source src="i/todo.mp4" />
@@ -515,43 +556,32 @@ $my_component.locale=en.json
 
 ---
 
-## Расширение
+## Модули
+<img src="i/ui-docs.png" />
+<Tags>
+  <Tag>компоненты</Tag>
+  <Tag>тесты</Tag>
+  <Tag>локализации</Tag>
+  <Tag>демки</Tag>
+  <Tag>readme</Tag>
+</Tags>
 
-<Icons>
-  <Icon big src="i/calendar-1.svg"/>
-  <Icon big text="в" />
-  <Icon big src="i/calendar-2.svg"/>
-</Icons>
+<Tags>
+  <Tag>модели</Tag>
+</Tags>
 
-<Icon big src="i/rock.svg"/>
-
-React, etc: надо думать заранее
-<br/>
-<Icon big src="i/puzzle.svg"/>
-
-Mol заставляет писать id каждой детали
-
----
-
-# ???
-
-Через тернии к звездам
-
-<br/>
-...mol?
-
-<Icon big src="i/brain.svg"/>
 
 ---
 
 ## Отладка
 
-<img width="500px" src="i/debug.png" />
+<img width="400px" src="i/debug.png" />
 
 <Tags>
   <Tag>prod</Tag>
   <Tag>dev</Tag>
   <Tag>server</Tag>
+  <Tag>mock</Tag>
   <Tag>исключения</Tag>
   <Tag>навигация</Tag>
 </Tags>
@@ -562,38 +592,22 @@ Mol заставляет писать id каждой детали
 
 <img src="i/debug-good.png" />
 
-<br/>
-<Icon big src="i/mol.svg"/>
+<Tags>
+  <Tag>FQN</Tag>
+  <Tag>Id</Tag>
+  <Tag>уровни</Tag>
+  <Tag>связь</Tag>
+</Tags>
+<Icons>
+  <Icon big src="i/mol.svg"/>
+  <Icon text="mol"/>
+</Icons>
 
 ---
-
-### Random
-
-<img src="i/debug-bad2.png" />
 
 dev tools, source map?
 
----
-
-### Кто создал?
-
-Mol
-
-```
-this
-$mol_app_demo.Root(0).Widget("mol_button_demo").Major_enabled() {…}
-```
-<br/>
-React
-
-```
-this
-Button {…}
-```
-
-<Icons>
-  <Icon big src="i/hierarchy.svg"/>
-</Icons>
+<img src="i/react-trace.png" />
 
 ---
 
@@ -627,40 +641,6 @@ $mol_button_major
 
 ---
 
-### didCatch componentStack
-
-```text
-The above error occurred in the <B> component:
-  in B (created by A)
-  in A
-  in div
-  in ErrorCatch
-```
-
-[jsfiddle.net/zerkalica/jro43nbg](https://jsfiddle.net/zerkalica/jro43nbg)
-
-```jsx
-const B = () => <div>test {qwe}</div> // Error !
-const A = () => <B/>
-
-ReactDOM.render(<ErrorCatch>
-  <div>[
-    <A key="1"/>
-    <A key="2" />
-  ]</div>
-</ErrorCatch>, document.getElementById('mount'));
-```
-
----
-
-# ???
-
-<Icon big src="i/holy.svg"/>
-
-<Icon big src="i/no-bug.svg"/>
-
----
-
 ## Сообщество
 
 <img width="230px" height="200px" src="i/lenin.svg"/>
@@ -668,14 +648,12 @@ ReactDOM.render(<ErrorCatch>
 Насколько просто помочь?
 
 <Tags>
-  <Tag>автор</Tag>
+  <Tag>упорство</Tag>
+  <Tag>отзывчивость</Tag>
   <Tag>bug трекер</Tag>
   <Tag>возраст issue</Tag>
-  <Tag>реальные примеры</Tag>
   <Tag>навигация</Tag>
 </Tags>
-
-<Icon big src="i/family.svg"/>
 
 <Notes>
     Фреймворк - не набор библиотек разных авторов.
@@ -685,6 +663,67 @@ ReactDOM.render(<ErrorCatch>
 </Notes>
 
 ---
+
+# ???
+
+<Tags>
+  <TagBox>
+    <TagHeader>Angular</TagHeader>
+    <TagFooter big>547k loc</TagFooter>
+  </TagBox>
+  <TagBox>
+    <TagHeader>material-ui</TagHeader>
+    <TagFooter big>220k loc</TagFooter>
+  </TagBox>
+  <TagBox>
+    <TagHeader>React</TagHeader>
+    <TagFooter big>182k loc</TagFooter>
+  </TagBox>
+  <TagBox>
+    <TagHeader>Vue</TagHeader>
+    <TagFooter big>141k loc</TagFooter>
+  </TagBox>
+  <TagBox>
+    <TagHeader>mol.js.org</TagHeader>
+    <TagFooter big>29k loc</TagFooter>
+  </TagBox>
+</Tags>
+
+<Icons>
+  <Icon big src="i/hero.svg"/>
+  <Icon big src="i/snowball.svg"/>
+</Icons>
+
+
+<Tags>
+  <Tag>типы</Tag>
+  <Tag>сопрограммы</Tag>
+  <Tag>реактивность</Tag>
+  <Tag>разделяемая память</Tag>
+</Tags>
+
+Понятное vs новое
+
+---
+
+# ???
+
+<img width="900" src="i/new.jpg"/>
+
+---
+
+## Спасибо,
+
+<img src="i/bye.png" />
+
+
+Юферев Сергей, [s.yuferev@qiwi.com](mailto:s.yuferev@qiwi.com)
+
+<br/>
+QIWI 2019
+
+---
+
 
 # ???
 
@@ -722,16 +761,83 @@ ReactDOM.render(<ErrorCatch>
 
 [mol.js.org](https://mol.js.org)
 
+---
+
+### didCatch componentStack
+
+```text
+The above error occurred in the <B> component:
+  in B (created by A)
+  in A
+  in div
+  in ErrorCatch
+```
+
+[jsfiddle.net/zerkalica/jro43nbg](https://jsfiddle.net/zerkalica/jro43nbg)
+
+```jsx
+const B = () => <div>test {qwe}</div> // Error !
+const A = () => <B/>
+
+ReactDOM.render(<ErrorCatch>
+  <div>[
+    <A key="1"/>
+    <A key="2" />
+  ]</div>
+</ErrorCatch>, document.getElementById('mount'));
+```
 
 ---
 
-## Спасибо,
+## Система. Расширение
 
-<img src="i/bye.png" />
+<Icons>
+  <Icon big src="i/calendar-1.svg"/>
+  <Icon big text="в" />
+  <Icon big src="i/calendar-2.svg"/>
+</Icons>
 
+<Icon big src="i/rock.svg"/>
 
-Юферев Сергей, [s.yuferev@qiwi.com](mailto:s.yuferev@qiwi.com)
-
-
+React, etc: надо думать заранее
 <br/>
-QIWI 2019
+<Icon big src="i/puzzle.svg"/>
+
+Mol заставляет писать id каждой детали
+
+---
+
+# ???
+
+UI не расширяется
+
+<Icon big src="i/sad.svg"/>
+
+---
+
+### Кто создал?
+
+Mol
+
+```
+this
+$mol_app_demo.Root(0).Widget("mol_button_demo").Major_enabled() {…}
+```
+<br/>
+React
+
+```
+this
+Button {…}
+```
+
+<Icons>
+  <Icon big src="i/hierarchy.svg"/>
+</Icons>
+
+---
+
+### Random
+
+<img src="i/debug-bad2.png" />
+

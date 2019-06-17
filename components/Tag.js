@@ -43,7 +43,7 @@ export const TagHeader = styled.div`
 export const TagFooter = styled.div`
   background: #eee;
   color: #444;
-  font-size: .5em;
+  font-size: ${props => props.big ? '1' : '0.5'}em;
   border-bottom-left-radius: 10px; 
   border-bottom-right-radius: 10px; 
   padding: 0.5rem 1rem;
