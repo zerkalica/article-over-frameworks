@@ -10,9 +10,6 @@ export const themes = [
 
 ## Анатомия фреймворка
 
-<Icon big src="i/human.svg"/>
-
-Почему я люблю высокоуровневую разработку
 <Icons>
   <Icon src="i/php-1.svg"/>
   <Icon src="i/drupal.svg"/>
@@ -31,9 +28,14 @@ export const themes = [
   <Icon src="i/mol.svg"/>
 </Icons>
 
+Почему я люблю высокоуровневую разработку
+
 <Notes>
     Меня зовут Сергей. Я работаю фронтенд-разработчиком в компании QIWI.
-    Что нужно, что б написать иподдерживать приложение малой кровью, не занимаясь подбором библиотек?
+
+    Как я пытался "улучшить" реакт или что нужно, что б написать и поддерживать приложение "малой кровью"?
+    Доклад для тех, кто хочет ориентироваться в фреймворках не только на основе хайпа.
+
     Всегда хотел создавать хорошо кастомизируемые приложения малой кровью, концентрируясь на предметной области, а не над подбором стека, настройкой деплоя, скафолдингом и бойлерплейтом.
     Что б выбрать технологию, надо знать какие части нужны для полноценной разработки, что б как минимум, они были в фреймворке и как они реализованны.
     В своем докладе я попытаюсь систематизировать эти части.
@@ -41,25 +43,33 @@ export const themes = [
 
 ---
 
-<Icon src="i/github-1.svg"/>
-
-100
-
-immutable-di, reactive-di
 <Icons>
-  <Icon big src="i/saw.svg"/>
-  <Icon big src="i/react.svg"/>
+  <Icon src="i/github-1.svg"/>
+  <Icon src="i/saw.svg"/>
+  <Icon text="100"/>
 </Icons>
-lom_atom + react = mobx + 5%
-
-mol_atom2 + react = lom_atom + 5%
 
 <Icons>
-  <Icon big src="i/sad.svg"/>
-  <Icon big src="i/react.svg"/>
-  <Icon big src="i/broken_heart.svg"/>
-  <Icon big src="i/libra.svg"/>
+  <Icon src="i/react.svg"/>
+  <Icon src="i/vue.svg"/>
+  <Icon src="i/angular.svg"/>
+  <Icon src="i/mobx.svg"/>
+  <Icon src="i/redux.svg"/>
 </Icons>
+
+reactive-di
+
+lom_atom
+
+mol_atom2 + react
+
+<Icons>
+  <Icon src="i/sad.svg"/>
+  <Icon src="i/broken_heart.svg"/>
+  <Icon src="i/libra.svg"/>
+</Icons>
+
+переосмысление
 
 ---
 
@@ -83,6 +93,7 @@ mol_atom2 + react = lom_atom + 5%
 </Tags>
 <Tags>
   <TagBox><TagHeader>Сообщество</TagHeader><TagFooter>помощь, примеры, документация</TagFooter></TagBox>
+  <TagBox><TagHeader>Рациональность</TagHeader><TagFooter>LOC, copypaste, цельность</TagFooter></TagBox>
 </Tags>
 
 <Icons>
@@ -120,6 +131,28 @@ mol_atom2 + react = lom_atom + 5%
 
 ---
 
+### Vue
+
+```js
+const Component = Vue.extend({
+  computed: {
+    // need annotation
+    greeting(): string {
+      return this.greet() + '!'
+    }
+  },
+  // `createElement` is inferred, but `render` needs return type
+  render (createElement): VNode {
+    return createElement('div', this.greeting)
+  }
+})
+```
+
+Вывод типов
+
+
+---
+
 # Реактивность
 
 <Icon big src="i/interface.svg" />
@@ -136,6 +169,7 @@ mol_atom2 + react = lom_atom + 5%
   <Tag>колбэки</Tag>
   <Tag>события</Tag>
   <Tag>потоки</Tag>
+  <Tag>декораторы</Tag>
 </Tags>
 
 <Notes>
@@ -148,11 +182,7 @@ mol_atom2 + react = lom_atom + 5%
 
 ---
 
-<Icons>
-  <Icon src="i/oop.svg" />
-  <Icon text="+" />
-  <Icon src="i/rocket.svg" />
-</Icons>
+### Excel
 
 ```ts
 class Counter {
@@ -178,41 +208,31 @@ const Example = observer(({counter}) => <div>
 
 ---
 
-<br/>
-<Icons>
-  <Icon text="fp()" />
-  <Icon text="+" />
-  <Icon src="i/rocket.svg" />
-</Icons>
+### State machine
 
 ```js
-function main(sources) {
-  const action$ = xs.merge(
-    sources.DOM.select('.increment').events('click').map(ev => +1)
-  )
-
-  const count$ = action$.fold((acc, x) => acc + x, 0)
-  const vdom$ = count$.map(count => div([
-    button('.increment', 'Increment'),
-    p('Counter: ' + count)
-  ]))
-
-  return { DOM: vdom$ }
+const counter = (state = 0, action) => {
+  switch (action.type) {
+    case 'INCREMENT': return state + 1
+    default: return state
+  }
 }
+const store = createStore(counter)
+
+<Counter
+  value={store.getState()}
+  onIncrement={() => store.dispatch({ type: 'INCREMENT' })},
+/>
 ```
 
 <Tags>
-  <Tag>CycleJS</Tag>
-  <Tag>RxReact</Tag>
+  <Tag>redux</Tag>
+  <Tag>effector</Tag>
+  <Tag>mst</Tag>
 </Tags>
 
 ---
-
-<Icons>
-  <Icon text="Proc" />
-  <Icon text="+" />
-  <Icon text="SE" />
-</Icons>
+### Procedural + side effects
 
 ```jsx
 function useCounter({value}) {
@@ -239,9 +259,9 @@ function Example() {
 # ???
 
 <Icons>
+  <Icon big src="i/typescript.svg"/>
+  <Icon big src="i/box.svg"/>
   <Icon big src="i/copypaste.svg"/>
-  <Icon big src="i/universe.svg"/>
-  <Icon big src="i/house.svg"/>
 </Icons>
 
 ---
@@ -264,7 +284,7 @@ function Example() {
 
 ---
 
-### Pending state
+### Служебное состояние и эффекты
 
 <Icons>
   <Icon src="i/action.svg"/>
@@ -293,7 +313,7 @@ function User({ user }) {
 
 ---
 
-### Suspense
+### Сопрограммы на исключениях
 
 <Icons>
   <Icon src="i/sleep.svg"/>
@@ -313,6 +333,7 @@ function User({id}) {
 }
 ```
 <Tags>
+  <Tag>React.suspense</Tag>
   <Tag>cache</Tag>
   <Tag>promise</Tag>
   <Tag>exception</Tag>
@@ -436,6 +457,13 @@ namespace $ {
   <Icon big src="i/copypaste.svg"/>
 </Icons>
 
+<Icons>
+  <Icon text="Импорты"/>
+  <Icon text="="/>
+  <Icon src="i/sad.svg"/>
+</Icons>
+
+
 ---
 
 ### Внешнее API
@@ -452,16 +480,14 @@ namespace $ {
 
 <Tags>
   <Tag>location</Tag>
-  <Tag>routing</Tag>
+  <Tag>axios</Tag>
+  <Tag>react-router</Tag>
   <Tag>storage</Tag>
   <Tag>fetch</Tag>
   <Tag>sockets</Tag>
 </Tags>
 
-<Tags>
-  <Tag>axios</Tag>
-  <Tag>react-router</Tag>
-</Tags>
+Просто, единообразно, изоморфно
 
 ---
 
@@ -473,9 +499,10 @@ namespace $ {
 vs
 
 ```text
-dom \h1
-sub /
-  <= welcome_title @ \Welcome to React
+$my_component $mol_view
+  dom \h1
+  sub /
+    <= welcome_title @ \Welcome to React
 ```
 <br/>
 $my_component.locale=en.json
@@ -511,7 +538,7 @@ $my_component.locale=en.json
   <Icon big src="i/box.svg"/>
   <Icon big text="Система"/>
   <Icon big text="+"/>
-  <Icon big text="примеры"/>
+  <Icon big text="realworld примеры"/>
 </Icons>
 
 <Tags>
@@ -548,8 +575,9 @@ $my_component.locale=en.json
 </video>
 
 <Tags>
-  <Tag>suspense</Tag>
-  <Tag>loading-компоненты</Tag>
+  <Tag>атомарность</Tag>
+  <Tag>блокировки</Tag>
+  <Tag>универсальность</Tag>
 </Tags>
 
 <Icon big src="i/car.svg"/>
@@ -557,6 +585,7 @@ $my_component.locale=en.json
 ---
 
 ## Модули
+
 <img src="i/ui-docs.png" />
 <Tags>
   <Tag>компоненты</Tag>
@@ -567,7 +596,8 @@ $my_component.locale=en.json
 </Tags>
 
 <Tags>
-  <Tag>модели</Tag>
+  <Tag>изолированность</Tag>
+  <Tag>фракталы</Tag>
 </Tags>
 
 
@@ -578,11 +608,8 @@ $my_component.locale=en.json
 <img width="400px" src="i/debug.png" />
 
 <Tags>
-  <Tag>prod</Tag>
   <Tag>dev</Tag>
   <Tag>server</Tag>
-  <Tag>mock</Tag>
-  <Tag>исключения</Tag>
   <Tag>навигация</Tag>
 </Tags>
 
@@ -605,7 +632,7 @@ $my_component.locale=en.json
 
 ---
 
-dev tools, source map?
+React dev tools, source map?
 
 <img src="i/react-trace.png" />
 
@@ -641,19 +668,21 @@ $mol_button_major
 
 ---
 
-## Сообщество
+# Сообщество
 
 <img width="230px" height="200px" src="i/lenin.svg"/>
 
-Насколько просто помочь?
-
 <Tags>
+  <Tag>глобальность</Tag>
+  <Tag>цельность</Tag>
   <Tag>упорство</Tag>
   <Tag>отзывчивость</Tag>
   <Tag>bug трекер</Tag>
   <Tag>возраст issue</Tag>
   <Tag>навигация</Tag>
 </Tags>
+
+Насколько просто помочь?
 
 <Notes>
     Фреймворк - не набор библиотек разных авторов.
@@ -664,7 +693,7 @@ $mol_button_major
 
 ---
 
-# ???
+## Рациональность
 
 <Tags>
   <TagBox>
@@ -691,24 +720,23 @@ $mol_button_major
 
 <Icons>
   <Icon big src="i/hero.svg"/>
+  <Icon big text="10x"/>
   <Icon big src="i/snowball.svg"/>
 </Icons>
 
 
-<Tags>
-  <Tag>типы</Tag>
-  <Tag>сопрограммы</Tag>
-  <Tag>реактивность</Tag>
-  <Tag>разделяемая память</Tag>
-</Tags>
+Выбирать простые и мощные идиомы,
 
-Понятное vs новое
+решающие проблемы, а не следствия.
+
+Целеполагание.
 
 ---
 
-# ???
+### Понятное vs новое
 
 <img width="900" src="i/new.jpg"/>
+
 
 ---
 
@@ -724,8 +752,9 @@ QIWI 2019
 
 ---
 
+[parseInt](https://habr.com/ru/post/456344/) +107, [mam](https://habr.com/ru/post/456288/) +9
 
-# ???
+---
 
 <div style={{display: 'flex'}}>
   <div style={{display: 'flex', flex: '0 1 50%', flexDirection: 'column'}}>
@@ -841,3 +870,61 @@ Button {…}
 
 <img src="i/debug-bad2.png" />
 
+---
+
+| как сейчас | проблемы | решение |
+|---------|-------|----|
+| раскол ФП vs ООП | война, саботаж фич (декораторы) | один лидер
+| стагнация ЯП | боязнь фич, консервация | один лидер
+| нерасширяемость | копипаста, код во view | tree в mol
+| плохая встраиваемость | devtools, sourcemap | FQN, chrome dt
+
+---
+
+| как сейчас | проблемы | решение |
+|---------|-------|----|
+| dev режим | невоспроизводимость | одинаковый код с prod|
+| импорты | ` ../`, реимпорты, бандлы | FQN
+| tree shaking | отладка, сборка | решать раньше
+| Random в именах | отладка | FQN |
+| Dynamic import | инфраструктура | тонкие фреймворки
+
+
+---
+
+React.hooks
+
+хейтят классы
+
+эмулируются get / set классов
+
+без фич ООП
+
+Vue3 копирует hooks
+
+долгий stage-2 декораторов
+
+---
+
+### fp()
+
+```js
+function main(sources) {
+  const action$ = xs.merge(
+    sources.DOM.select('.increment').events('click').map(ev => +1)
+  )
+
+  const count$ = action$.fold((acc, x) => acc + x, 0)
+  const vdom$ = count$.map(count => div([
+    button('.increment', 'Increment'),
+    p('Counter: ' + count)
+  ]))
+
+  return { DOM: vdom$ }
+}
+```
+
+<Tags>
+  <Tag>CycleJS</Tag>
+  <Tag>RxReact</Tag>
+</Tags>

@@ -41,7 +41,24 @@ export default {
         'pre': {
             fontSize: '32px',
         },
-    }
+        table: {
+          fontSize: '42px',
+        }
+    },
+    table: {
+      borderCollapse: 'collapse',
+    },
+    'tr:nth-child(2n)': {
+      background: '#eee',
+    },
+    th: {
+      padding: '0.5rem',
+      border: '1px solid #999',
+    },
+    td: {
+      padding: '0.5rem',
+      border: '1px solid #999',
+    },
   },
 
   ul: {
