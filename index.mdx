@@ -8,24 +8,26 @@ export const themes = [
   highlight,
 ]
 
+export const root = process.env.ASSET_PATH || (typeof window === 'undefined' ? 'i' : window.location.pathname + 'i')
+
 ## Анатомия фреймворка
 
 <Icons>
-  <Icon src="i/php-1.svg"/>
-  <Icon src="i/drupal.svg"/>
-  <Icon src="i/zend-framework.svg"/>
-  <Icon src="i/symfony.svg"/>
+  <Icon src={`${root}/php-1.svg`}/>
+  <Icon src={`${root}/drupal.svg`}/>
+  <Icon src={`${root}/zend-framework.svg`}/>
+  <Icon src={`${root}/symfony.svg`}/>
 </Icons>
 
 <Icons>
-  <Icon src="i/javascript.svg"/>
-  <Icon src="i/backbone-icon.svg"/>
-  <Icon src="i/nodejs-icon.svg"/>
-  <Icon src="i/react.svg"/>
+  <Icon src={`${root}/javascript.svg`}/>
+  <Icon src={`${root}/backbone-icon.svg`}/>
+  <Icon src={`${root}/nodejs-icon.svg`}/>
+  <Icon src={`${root}/react.svg`}/>
 </Icons>
 <Icons>
-  <Icon src="i/typescript.svg"/>
-  <Icon src="i/mol.svg"/>
+  <Icon src={`${root}/typescript.svg`}/>
+  <Icon src={`${root}/mol.svg`}/>
 </Icons>
 
 Почему я люблю высокоуровневую разработку
@@ -44,17 +46,17 @@ export const themes = [
 ---
 
 <Icons>
-  <Icon src="i/github-1.svg"/>
-  <Icon src="i/saw.svg"/>
+  <Icon src={`${root}/github-1.svg`}/>
+  <Icon src={`${root}/saw.svg`}/>
   <Icon text="100"/>
 </Icons>
 
 <Icons>
-  <Icon src="i/react.svg"/>
-  <Icon src="i/vue.svg"/>
-  <Icon src="i/angular.svg"/>
-  <Icon src="i/mobx.svg"/>
-  <Icon src="i/redux.svg"/>
+  <Icon src={`${root}/react.svg`}/>
+  <Icon src={`${root}/vue.svg`}/>
+  <Icon src={`${root}/angular.svg`}/>
+  <Icon src={`${root}/mobx.svg`}/>
+  <Icon src={`${root}/redux.svg`}/>
 </Icons>
 
 reactive-di
@@ -64,9 +66,9 @@ lom_atom
 mol_atom2 + react
 
 <Icons>
-  <Icon src="i/sad.svg"/>
-  <Icon src="i/broken_heart.svg"/>
-  <Icon src="i/libra.svg"/>
+  <Icon src={`${root}/sad.svg`}/>
+  <Icon src={`${root}/broken_heart.svg`}/>
+  <Icon src={`${root}/libra.svg`}/>
 </Icons>
 
 переосмысление
@@ -97,8 +99,8 @@ mol_atom2 + react
 </Tags>
 
 <Icons>
-  <Icon strike src="i/file.svg"/>
-  <Icon src="i/car.svg"/>
+  <Icon strike src={`${root}/file.svg`}/>
+  <Icon src={`${root}/car.svg`}/>
 </Icons>
 
 ---
@@ -106,20 +108,20 @@ mol_atom2 + react
 ## ЯП
 
 <Icons>
-  <Icon src="i/typescript.svg" />
+  <Icon src={`${root}/typescript.svg`} />
   <Icon text="?" />
 </Icons>
 <Icons>
-  <Icon src="i/vue.svg" />
-  <Icon src="i/sad.svg" />
+  <Icon src={`${root}/vue.svg`} />
+  <Icon src={`${root}/sad.svg`} />
   <Icon text="vetur" />
 </Icons>
 
 <Icons>
-  <Icon src="i/react.svg" />
+  <Icon src={`${root}/react.svg`} />
   <Icon text="jsx" />
   <Icon text="+" />
-  <Icon src="i/nails.svg" />
+  <Icon src={`${root}/nails.svg`} />
 </Icons>
 
 <Tags>
@@ -155,13 +157,13 @@ const Component = Vue.extend({
 
 # Реактивность
 
-<Icon big src="i/interface.svg" />
+<Icon big src={`${root}/interface.svg`} />
 
 Интерфейс
 
 <br/>
 
-<Icon big src="i/rocket.svg" />
+<Icon big src={`${root}/rocket.svg`} />
 
 Изменения
 
@@ -259,21 +261,21 @@ function Example() {
 # ???
 
 <Icons>
-  <Icon big src="i/typescript.svg"/>
-  <Icon big src="i/box.svg"/>
-  <Icon big src="i/copypaste.svg"/>
+  <Icon big src={`${root}/typescript.svg`}/>
+  <Icon big src={`${root}/box.svg`}/>
+  <Icon big src={`${root}/copypaste.svg`}/>
 </Icons>
 
 ---
 
 ## Асинхронность
 
-<Icon big src="i/clock.svg"/>
+<Icon big src={`${root}/clock.svg`}/>
 
 Ожидание готовности
 
 <br/>
-<Icon big src="i/error.svg"/>
+<Icon big src={`${root}/error.svg`}/>
 
 Обработка ошибок
 
@@ -287,9 +289,9 @@ function Example() {
 ### Служебное состояние и эффекты
 
 <Icons>
-  <Icon src="i/action.svg"/>
-  <Icon src="i/state.svg"/>
-  <Icon src="i/clock.svg"/>
+  <Icon src={`${root}/action.svg`}/>
+  <Icon src={`${root}/state.svg`}/>
+  <Icon src={`${root}/clock.svg`}/>
 </Icons>
 
 ```jsx
@@ -316,8 +318,8 @@ function User({ user }) {
 ### Suspense
 
 <Icons>
-  <Icon src="i/sleep.svg"/>
-  <Icon src="i/loop.svg"/>
+  <Icon src={`${root}/sleep.svg`}/>
+  <Icon src={`${root}/loop.svg`}/>
 </Icons>
 
 
@@ -346,19 +348,19 @@ function User({id}) {
 # ???
 
 <Icons>
-  <Icon big src="i/action.svg"/>
+  <Icon big src={`${root}/action.svg`}/>
 </Icons>
 vs
 <Icons>
-  <Icon big src="i/sleep.svg"/>
-  <Icon big src="i/copypaste.svg"/>
+  <Icon big src={`${root}/sleep.svg`}/>
+  <Icon big src={`${root}/copypaste.svg`}/>
 </Icons>
 
 ---
 
 ## Контексты
 
-<img src="i/di-before.svg" />
+<img src={`${root}/di-before.svg`} />
 <br/>
 
 <Tags>
@@ -369,9 +371,9 @@ vs
 </Tags>
 
 <Icons>
-  <Icon big src="i/hierarchy.svg"/>
-  <Icon big src="i/clone.svg"/>
-  <Icon big src="i/rocket.svg"/>
+  <Icon big src={`${root}/hierarchy.svg`}/>
+  <Icon big src={`${root}/clone.svg`}/>
+  <Icon big src={`${root}/rocket.svg`}/>
 </Icons>
 
 <Tags>
@@ -420,7 +422,7 @@ export class HeroListComponent {
 }
 ```
 <Icons>
-  <Icon src="i/typescript.svg"/>
+  <Icon src={`${root}/typescript.svg`}/>
   <Icon text="+"/>
   <Icon text="Metadata"/>
 </Icons>
@@ -446,21 +448,21 @@ namespace $ {
 }
 ```
 
-<Icon src="i/mol.svg"/>
+<Icon src={`${root}/mol.svg`}/>
 
 ---
 
 # ???
 
 <Icons>
-  <Icon big src="i/typescript.svg"/>
-  <Icon big src="i/copypaste.svg"/>
+  <Icon big src={`${root}/typescript.svg`}/>
+  <Icon big src={`${root}/copypaste.svg`}/>
 </Icons>
 
 <Icons>
   <Icon text="Импорты"/>
   <Icon text="="/>
-  <Icon src="i/sad.svg"/>
+  <Icon src={`${root}/sad.svg`}/>
 </Icons>
 
 
@@ -471,9 +473,9 @@ namespace $ {
 <Icons>
   <Icon text="url"/>
   <Icon text="+"/>
-  <Icon big src="i/state.svg"/>
+  <Icon big src={`${root}/state.svg`}/>
   <Icon text="+"/>
-  <Icon big src="i/rocket.svg"/>
+  <Icon big src={`${root}/rocket.svg`}/>
 </Icons>
 
 Ниточки к браузеру
@@ -522,7 +524,7 @@ $my_component.locale=en.json
 
 ## UI
 
-<Icon big src="i/application.svg"/>
+<Icon big src={`${root}/application.svg`}/>
 
 Компоненты
 
@@ -535,7 +537,7 @@ $my_component.locale=en.json
 
 <br/>
 <Icons>
-  <Icon big src="i/box.svg"/>
+  <Icon big src={`${root}/box.svg`}/>
   <Icon big text="Система"/>
   <Icon big text="+"/>
   <Icon big text="realworld примеры"/>
@@ -553,7 +555,7 @@ $my_component.locale=en.json
 ### Система. Адаптивность
 
 <video autoplay="autoplay" loop="loop">
-  <source src="i/adaptive.mp4" />
+  <source src={`${root}/adaptive.mp4`} />
 </video>
 
 <Tags>
@@ -564,14 +566,14 @@ $my_component.locale=en.json
   <Tag>auto breakpoint</Tag>
 </Tags>
 
-<Icon src="i/mobile.svg"/>
+<Icon src={`${root}/mobile.svg`}/>
 
 ---
 
 ## Система. Автоматизация
 
 <video autoplay="autoplay" loop="loop">
-  <source src="i/todo.mp4" />
+  <source src={`${root}/todo.mp4`} />
 </video>
 
 <Tags>
@@ -580,13 +582,13 @@ $my_component.locale=en.json
   <Tag>универсальность</Tag>
 </Tags>
 
-<Icon big src="i/car.svg"/>
+<Icon big src={`${root}/car.svg`}/>
 
 ---
 
 ## Модули
 
-<img src="i/ui-docs.png" />
+<img src={`${root}/ui-docs.png`} />
 <Tags>
   <Tag>компоненты</Tag>
   <Tag>тесты</Tag>
@@ -605,7 +607,7 @@ $my_component.locale=en.json
 
 ## Отладка
 
-<img width="400px" src="i/debug.png" />
+<img width="400px" src={`${root}/debug.png`} />
 
 <Tags>
   <Tag>dev</Tag>
@@ -617,7 +619,7 @@ $my_component.locale=en.json
 
 ### Есть верстка, где компонент?
 
-<img src="i/debug-good.png" />
+<img src={`${root}/debug-good.png`} />
 
 <Tags>
   <Tag>FQN</Tag>
@@ -626,7 +628,7 @@ $my_component.locale=en.json
   <Tag>связь</Tag>
 </Tags>
 <Icons>
-  <Icon big src="i/mol.svg"/>
+  <Icon big src={`${root}/mol.svg`}/>
   <Icon text="mol"/>
 </Icons>
 
@@ -634,7 +636,7 @@ $my_component.locale=en.json
 
 React dev tools, source map?
 
-<img src="i/react-trace.png" />
+<img src={`${root}/react-trace.png`} />
 
 ---
 
@@ -696,9 +698,9 @@ $mol_button_major
 Насколько просто помочь?
 
 <Icons>
-  <Icon big src="i/hero.svg"/>
+  <Icon big src={`${root}/hero.svg`}/>
   <Icon big text="10x"/>
-  <Icon big src="i/snowball.svg"/>
+  <Icon big src={`${root}/snowball.svg`}/>
 </Icons>
 
 
@@ -710,14 +712,14 @@ $mol_button_major
 
 ### Понятное vs новое
 
-<img width="900" src="i/new.jpg"/>
+<img width="900" src={`${root}/new.jpg`}/>
 
 
 ---
 
 ## Спасибо,
 
-<img src="i/bye.png" />
+<img src={`${root}/bye.png`} />
 
 
 Юферев Сергей, [s.yuferev@qiwi.com](mailto:s.yuferev@qiwi.com)
@@ -729,7 +731,7 @@ QIWI 2019
 
 # Сообщество
 
-<img width="230px" height="200px" src="i/lenin.svg"/>
+<img width="230px" height="200px" src={`${root}/lenin.svg`}/>
 
 <Tags>
   <Tag>глобальность</Tag>
@@ -822,16 +824,16 @@ ReactDOM.render(<ErrorCatch>
 ## Система. Расширение
 
 <Icons>
-  <Icon big src="i/calendar-1.svg"/>
+  <Icon big src={`${root}/calendar-1.svg`}/>
   <Icon big text="в" />
-  <Icon big src="i/calendar-2.svg"/>
+  <Icon big src={`${root}/calendar-2.svg`}/>
 </Icons>
 
-<Icon big src="i/rock.svg"/>
+<Icon big src={`${root}/rock.svg`}/>
 
 React, etc: надо думать заранее
 <br/>
-<Icon big src="i/puzzle.svg"/>
+<Icon big src={`${root}/puzzle.svg`}/>
 
 Mol заставляет писать id каждой детали
 
@@ -841,7 +843,7 @@ Mol заставляет писать id каждой детали
 
 UI не расширяется
 
-<Icon big src="i/sad.svg"/>
+<Icon big src={`${root}/sad.svg`}/>
 
 ---
 
@@ -862,14 +864,14 @@ Button {…}
 ```
 
 <Icons>
-  <Icon big src="i/hierarchy.svg"/>
+  <Icon big src={`${root}/hierarchy.svg`}/>
 </Icons>
 
 ---
 
 ### Random
 
-<img src="i/debug-bad2.png" />
+<img src={`${root}/debug-bad2.png`} />
 
 ---
 

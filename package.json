@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck -p 8081 index.mdx",
-    "build": "mdx-deck -d docs build index.mdx -webpack ./webpack.config.js && cp -rf i docs",
+    "build": "mdx-deck -d docs build index.mdx && cp -rf i docs",
     "help": "mdx-deck",
     "pdf": "mdx-deck-export pdf index.mdx"
   },
