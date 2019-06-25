@@ -1,7 +1,7 @@
 // webpack.config.js example
 module.exports = {
   output: {
-    publicPath: '/article-over-frameworks',
+    publicPath: '/article-over-frameworks/',
   },
   module: {
     rules: [
