@@ -1,6 +1,8 @@
 import baseTheme from '@mdx-deck/themes'
 import {default as syntax} from 'react-syntax-highlighter/dist/esm/styles/prism/prism'
 
+if (typeof location !== 'undefined') __webpack_public_path__ = location.href
+
 const Provider = ({children, slides, index}) => (
   <div>
     {children}

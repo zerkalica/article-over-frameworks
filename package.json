@@ -6,10 +6,12 @@
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck -p 8081 index.mdx",
-    "build": "mdx-deck -d docs build index.mdx && cp -rf i docs",
-    "help": "mdx-deck"
+    "build": "mdx-deck -d docs build index.mdx -webpack ./webpack.config.js && cp -rf i docs",
+    "help": "mdx-deck",
+    "pdf": "mdx-deck-export pdf index.mdx"
   },
   "devDependencies": {
+    "@mdx-deck/export": "^2.4.0",
     "mdx-deck": "^2.3.2",
     "mermaid": "^8.0.0",
     "styled-components": "^4.3.1"
