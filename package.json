@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck -p 8081 index.mdx",
-    "build": "ASSET_PATH=/article-overt-frameworks mdx-deck -d docs build index.mdx && cp -rf i docs",
+    "build": "ASSET_PATH=/article-over-frameworks/i mdx-deck -d docs build index.mdx && cp -rf i docs",
     "help": "mdx-deck",
     "pdf": "mdx-deck-export pdf index.mdx"
   },
